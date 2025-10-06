@@ -1,0 +1,11 @@
+@import "./variables.scss";
+
+.dark {
+  // Footer 组件变量覆盖
+  --v3-footer-border-color: #{$footer-border-color};
+  --v3-footer-title-color: #{$footer-title-color};
+  --v3-footer-text-color: #{$footer-text-color};
+  --v3-footer-hover-color: #{$footer-hover-color};
+}
+
+@import "../core/index.scss";

@@ -1,0 +1,195 @@
+.dark-blue {
+
+  //目录网站公共变量
+  --app-bg-color: #1f1f21;
+  --app-text-color: #918CAD;
+  --app-border-color:#3c3e45;
+  --app-h2-text-Light-color:#c0bcdf;
+  --app-h2-text-Dark-color:#4532c9;
+  --app-select-isselected-color:#413e52;
+  --app-form-title-14-4:#C0BCDF;
+  --app-form-p-16:#C0BCDF;
+  --app-Dialog-bg-color:#1f1f21;
+
+
+  /**heade**/
+  --app-header-text-color:#918cad;
+  --app-header-text-hover-color:#c0bcdf;
+  /**紫色按钮**/
+  --app-purpleButton-bg-color:#4532c9;
+  --app-purpleButton-bg-boxshow-color:#4532c966;
+  --app-purpleButton-hover-boxshow-color:#4532c9b2;
+  /**红色按钮**/
+  --app-form-submit-botton-error:#b7423e;
+
+
+  /**侧边栏字体颜色**/
+  --app-sidebar-menu-text-color: #c0bcdf;
+  --app-sidebar-menu-text-active-color:#d3d3ff;
+  --app-sidebar-menu-active-bg-color:#4532c9;
+  /**三级侧边栏颜色**/
+  --app-ThirdLevelMenu-text-active-bg-color: #4532c9;
+  --app-ThirdLevelMenu-text-hover-bg-color: #2e2c3a;
+  --app-ThirdLevelMenu-text-hover-text-color:#c0bcdf;
+  --app-ThirdLevelMenu-box-show: #4532c966;
+  /**四级侧边栏颜色**/
+  --app-FourthLevelMenu-active-bg-color:#232326;
+  --app-FourthLevelMenu-hover-bg-color:#232326;
+  --app-FourthLevelMenu-text-hover-text-color:#c0bcdf;
+  /**主内容颜色**/
+  --app-main-bg-color:#232326;
+  /**form颜色**/
+  --app-form-top-title-color:#c0bcdf;
+  --app-form-top-title-p:#7d74c0;
+  --app-form-main-form-item-box-p1-color:#918cad;
+  --app-form-p-color:#918cad;
+  --app-form-p-color-66637c:#7D74C0;
+
+  --app-switch-default-bg-color:#2e2c3a;
+  --app-switch-action-bg-color:#c0bcdf;
+  --app-switch-default-is-checked-bg-color:#4532c9;
+  /**module-box颜色**/
+  --app-module-box-item-bg-color:#4532c9;
+  --app-module-box-item-text-color:#918cad;
+  --app-module-box-item-top-text-color:#d3d3ff;
+  --app-module-box-item-text-hover-color:#7d74c0;
+  --app-module-box-item-icon-color:#232326;
+  --app-module-box-item-icon-hover-color:#413e52;
+  --app-module-box-item-box-show-hover-color:#a7a0d33b;
+  --app-module-box-h2:#c0bcdf;
+  --app-module-box-p1:#7d74c0;
+  --app-module-box-demo-bg:linear-gradient(180deg, #282733 0%,  #232326 100%);;
+
+
+  /**module-box3颜色**/
+  --app-module3-box-bg-color:#232326;
+  --app-module3-box-text-color:#C0BCDF;
+  --app-module3-box-show-color:#a7a0d33b;
+  --app-module3-box-border-color:#35353f;
+  --app-module-box-p2:#7D74C0;
+  --app-Dot-border-color:#636873;
+  --app-Dot1-bg-color:#4532c9;
+  --app-line2-bg-left-color:#636873;
+  --app-line2-bg-right-color:#4532c9;
+  --app-form-input-bg-color:#27272a;
+  /**module-box4颜色**/
+  --app-module4-text1-color:#C0BCDF;
+  --app-module4-text2-color:#918CAD;
+
+  /**module-box5颜色**/
+  --app-module5-box-bg-color:#232326;
+
+  --app-module5-box-text-color:#C0BCDF;
+  --app-module5-box-bg-hover-color:#413e52;
+  --app-module5-box-border-color:#3c3e45;
+
+  /**module-box6颜色**/
+  --app-module6-top-bg-color:#232326;
+  --app-module6-top-text-color:#c0bcdf;
+  --app-module6-border-color:#4532C9;
+  --app-module6-number-left-color:#4532c9;
+  --app-module6-content-text-color:#7D74C0;
+
+  /**module-box6颜色**/
+  --app-module6-text-1-color:#c0bcdf;
+  --app-module6-text-2-color:#7d74c0;
+  --app-module6-text-3-color:#918cad;
+
+  /**module-box8颜色**/
+  --app-module8-box-bg-color:#1f1f21;
+  --app-module8-collapse-item-title-before-color:#4532C9;
+  --app-module8-collapse-item-header-color:#C0BCDF;
+  --app-module8-el-collapse-item-content-color:#918cad;
+
+  /**homeBottom颜色**/
+  --app-homeBottom-text-color:#918cad;
+  /**features页面**/
+  --app-features-border-color:#35353f;
+  --app-features-border-hover-color:#3c3e45;
+
+
+  /**工作台*/
+  --app-workbench-bg-color:#232326;
+  /**footer*/
+  --app-footer-text-1-color:#7d74c0;
+  --app-footer-text-2-color:#918cad;
+
+  /**通用设置背景**/
+  --generalSettings-bg-color:#232326;
+
+  /**表格**/
+  --table-item-box-active:#2e2c3a;
+
+  /**login**/
+  --app-login-bg-color:#232326;
+  --app-login-text-color:#c0bcdf;
+
+  /**wangEditor**/
+  --wangEditor-bg-color:#413e52;
+  --wangEditor-ben-text-color:#C0BCDF;
+
+
+  /***app-form-options-view**/
+
+  --options-view-btn-border-color:#3c3e45;
+  --options-view-btn-bg-color:#C0BCDF;
+  --options-view-btn-text-color:#433D63;
+
+
+  --options-view-btn-active-bg-color:#4532c9;
+  --options-view-btn-active-text-color:#D3D3FF;
+
+  /**无数据背景**/
+
+  --app-nodata-bg-color:#2e2c3a;
+  --app-nodata-text-color:#A39EBD;
+
+  /**CustomTable**/
+  --CustomTable-top-bg-color:#27272a;
+  --CustomTable-header-color:#C0BCDF;
+  --CustomTable-td-color:#C0BCDF;
+
+  /**customPagination组件**/
+
+  --customPagination-dropdown-menu-bg-color:#a7a0d33b;
+  --customPagination-dropdown-menu-text-color:#C0BCDF;
+  --customPagination-dropdown-menu-active-bg-color:#4532c9;
+  --customPagination-dropdown-menu-active-text-color:#D3D3FF;
+
+
+  /**vxe-table**/
+  --vxe-table--header-bg-color:transparent;
+  --vxe-table--header-hover-bg-color:#232326;
+  --vxe-table--header-active-bg-color:#2e2c3a;
+  --vxe-table--header-text-color:#C0BCDF;
+  --vxe-table-text-color:#918CAD;
+
+  --vxe-table-popover-item-border-color:#67627b;
+  --vxe-table-popover-item-text-color:#C0BCDF;
+  --vxe-table-popover-item-text-del-color:#D95F5B;
+  --vxe-table-popover-item-bg-color:#232326;
+  --vxe-table-popover-item-hover-bg-color:#2e2c3a;
+
+  /**api**/
+  --deleteDialog-btn-bg-color:#27272a;
+  --deleteDialog-btn-text-color:#E2E2FF;
+  --deleteDialog-btn-text-active-color:#e2e2ff;
+
+
+  /**pricePlan2**/
+
+  --pricePlan-bg-color:#232326;
+  --pricePlan-border-color:#3c3e45;
+  --pricePlan-title-color:#C0BCDF;
+  --pricePlan-text-color:#7D74C0;
+
+  --pricePlan-tab-view-bg-color:#27272a;
+  --pricePlan-purple-color:#4532C9;
+
+  --pricePlan-nodata-bg--color:#918CAD;
+
+
+
+}
+
+@import "../core/index.scss";

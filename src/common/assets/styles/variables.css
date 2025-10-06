@@ -1,0 +1,267 @@
+/* 全局 CSS 变量，这种变量不仅可以在 CSS 和 SCSS 中使用，还可以导入到 JS 中使用 */
+
+:root {
+  /* Body */
+  --v3-body-text-color: var(--el-text-color-primary);
+  --v3-body-bg-color: var(--el-bg-color-page);
+  /* Header 区域 = NavigationBar 组件 + TagsView 组件 */
+  --v3-header-height: calc(
+    var(--v3-navigationbar-height) + var(--v3-tagsview-height) + var(--v3-header-border-bottom-width)
+  );
+  --v3-header-bg-color: var(--el-bg-color);
+  --v3-header-box-shadow: var(--el-box-shadow-lighter);
+  --v3-header-border-bottom-width: 1px;
+  --v3-header-border-bottom: var(--v3-header-border-bottom-width) solid var(--el-fill-color);
+  /* NavigationBar 组件 */
+  --v3-navigationbar-height: 50px;
+  --v3-navigationbar-text-color: var(--el-text-color-regular);
+  /* Sidebar 组件（左侧模式全部生效、顶部模式全部不生效、混合模式非颜色部分生效） */
+  --v3-sidebar-width: 220px;
+  --v3-sidebar-hide-width: 76px;
+  --v3-sidebar-border-right: 1px solid var(--el-fill-color);
+  --v3-sidebar-menu-item-height: 36px;
+  --v3-sidebar-menu-tip-line-bg-color: var(--el-color-primary);
+  --v3-sidebar-menu-bg-color:#e6edf8;
+
+  --v3-sidebar-menu-hover-bg-color: #409eff10;
+  --v3-sidebar-menu-text-color: #cfd3dc;
+  --v3-sidebar-menu-active-text-color: #ffffff;
+  /* TagsView 组件 */
+  --v3-tagsview-height: 34px;
+  --v3-tagsview-text-color: var(--el-text-color-regular);
+  --v3-tagsview-tag-active-text-color: #ffffff;
+  --v3-tagsview-tag-bg-color: var(--el-bg-color);
+  --v3-tagsview-tag-active-bg-color: var(--el-color-primary);
+  --v3-tagsview-tag-border-radius: 2px;
+  --v3-tagsview-tag-border-color: var(--el-border-color-lighter);
+  --v3-tagsview-tag-active-border-color: var(--el-color-primary);
+  --v3-tagsview-tag-icon-hover-bg-color: #00000030;
+  --v3-tagsview-tag-icon-hover-color: #ffffff;
+  --v3-tagsview-contextmenu-text-color: var(--el-text-color-regular);
+  --v3-tagsview-contextmenu-hover-text-color: var(--el-text-color-primary);
+  --v3-tagsview-contextmenu-bg-color: var(--el-bg-color-overlay);
+  --v3-tagsview-contextmenu-hover-bg-color: var(--el-fill-color);
+  --v3-tagsview-contextmenu-box-shadow: var(--el-box-shadow);
+  /* Hamburger 组件 */
+  --v3-hamburger-text-color: var(--el-text-color-primary);
+  /* RightPanel 组件  */
+  --v3-rightpanel-button-bg-color: #001428;
+
+
+  /**公共背景颜色**/
+  --app-bg-color:#e6edf8;
+  --app-text-color: #615B7C;
+  --app-border-color:#b1abcf;
+  --app-h2-text-Light-color:#433d63;
+  --app-h2-text-Dark-color:#8167ff;
+  --app-select-isselected-color:#8167ff;
+
+  --app-form-title-14-4:#433D63;
+  --app-form-p-16:#433D63;
+  --app-Dialog-bg-color:#9994B3;
+
+  /**heade**/
+  --app-header-text-color:#615b7c;
+  --app-header-text-hover-color:#433d63;
+
+  /**紫色按钮**/
+  --app-purpleButton-bg-color:#8167ff;
+  --app-purpleButton-bg-boxshow-color:#4532c966;
+  --app-purpleButton-hover-boxshow-color:#4532c9b2;
+
+  /**红色按钮**/
+  --app-form-submit-botton-error:#b7423e;
+
+
+  /**侧边栏字体颜色**/
+  --app-sidebar-menu-text-color:#66637c;
+  --app-sidebar-menu-text-active-color:#E2E2FF;
+  --app-sidebar-menu-active-bg-color:#8167ff;
+  /**三级侧边栏颜色**/
+  --app-ThirdLevelMenu-text-active-bg-color:#8167ff;
+  --app-ThirdLevelMenu-text-hover-bg-color:#d0cdde;
+  --app-ThirdLevelMenu-text-hover-text-color:#433d63;
+  --app-ThirdLevelMenu-box-show:#4532c966;
+  /**四级侧边栏颜色**/
+  --app-FourthLevelMenu-active-bg-color:#dde4f0;
+  --app-FourthLevelMenu-hover-bg-color:#dde4f0;
+  --app-FourthLevelMenu-text-hover-text-color:#433d63;
+  /**主内容颜色**/
+  --app-main-bg-color:#dde4f0;
+  /**form颜色**/
+  --app-form-top-title-color:#433d63;
+  --app-form-top-title-p:#66637c;
+  --app-form-main-form-item-box-p1-color:#615b7c;
+  --app-form-p-color:#615b7c;
+  --app-form-p-color-66637c:#66637c;
+  --app-switch-default-bg-color:#d0cdde;
+  --app-switch-action-bg-color:#d0cdde;
+  --app-switch-default-is-checked-bg-color:#8167ff;
+  --app-form-input-bg-color:#e8f0fe;
+
+  /**module-box颜色**/
+  --app-module-box-item-bg-color:#8167ff;
+  --app-module-box-item-top-text-color:#e2e2ff;
+  --app-module-box-item-text-color:#615b7c;
+  --app-module-box-item-text-hover-color:#433d63;
+  --app-module-box-item-icon-color:#dde4f0;
+  --app-module-box-item-icon-hover-color:#615b7c;
+  --app-module-box-item-box-show-hover-color:#a7a0d33b;
+  --app-module-box-h2:#433d63;
+  --app-module-box-p1:#66637c;
+  --app-module-box-demo-bg:linear-gradient(180deg, #dcd8ef 0%, #dde4f0 100%);
+
+  /**module-box3颜色**/
+  --app-module3-box-bg-color:#dde4f0;
+  --app-module3-box-text-color:#433d63;
+  --app-module3-box-show-color:#a7a0d33b;
+  --app-module3-box-border-color:#c6c2da;
+  --app-module-box-p2:#66637c;
+
+  /**module-box4颜色**/
+  --app-module4-text1-color:#433d63;
+  --app-module4-text2-color:#615b7c;
+
+  /**module-box5颜色**/
+  --app-module5-box-bg-color:#dde4f0;
+
+  --app-module5-box-text-color:#433D63;
+  --app-module5-box-bg-hover-color:#d0d7e3;
+  --app-module5-box-border-color:#b1abcf;
+  /**module-box6颜色**/
+  --app-module6-top-bg-color:#dde4f0;
+  --app-module6-top-text-color:#433D63;
+  --app-module6-border-color:#8167ff;
+  --app-module6-number-left-color:#8167ff;
+  --app-module6-content-text-color:#66637C;
+  /**module-box6颜色**/
+  --app-module6-text-1-color:#433d63;
+  --app-module6-text-2-color:#66637c;
+  --app-module6-text-3-color:#615b7c;
+
+  /**module-box8颜色**/
+  --app-module8-box-bg-color:#e6edf8;
+  --app-module8-collapse-item-title-before-color:#8167ff;
+  --app-module8-collapse-item-header-color:#433D63;
+  --app-module8-el-collapse-item-content-color:#433D63;
+  /**homeBottom颜色**/
+  --app-homeBottom-text-color:#615b7c;
+
+
+  --app-Dot-border-color:#ada8c4;
+  --app-Dot1-bg-color:#8167ff;
+  --app-line2-bg-left-color:#cbc9d7;
+  --app-line2-bg-right-color: #8167ff;
+
+  /**features页面**/
+  --app-features-border-color:#c6c2da;
+  --app-features-border-hover-color:#b1abcf;
+
+
+    /**工作台*/
+  --app-workbench-bg-color:#dde4f0;
+  /**footer*/
+  --app-footer-text-1-color:#66637c;
+  --app-footer-text-2-color:#615b7c;
+
+  /**通用设置背景**/
+  --generalSettings-bg-color:#dde4f0;
+
+  /**表格**/
+  --table-item-box-active:#d0cdde;
+
+  /**login**/
+  --app-login-bg-color:#dde4f0;
+  --app-login-text-color:#433d63;
+
+  /**wangEditor**/
+  --wangEditor-bg-color:#d0d7e3;
+  --wangEditor-ben-text-color:#433d63;
+
+
+  /***app-form-options-view**/
+
+  --options-view-btn-border-color:#b1abcf;
+  --options-view-btn-bg-color:#e8f0fe;
+  --options-view-btn-text-color:#433D63;
+
+  --options-view-btn-active-bg-color:#8167ff;
+  --options-view-btn-active-text-color:#E2E2FF;
+
+  /**无数据背景**/
+
+  --app-nodata-bg-color:#d0cdde;
+  --app-nodata-text-color:#6C658E;
+
+  /**CustomTable**/
+  --CustomTable-top-bg-color:#e8f0fe;
+  --CustomTable-header-color:#433D63;
+  --CustomTable-td-color:#433D63;
+
+  /**customPagination组件**/
+
+  --customPagination-dropdown-menu-bg-color:#a7a0d33b;
+  --customPagination-dropdown-menu-text-color:#433d63;
+  --customPagination-dropdown-menu-active-bg-color:#8167ff;
+  --customPagination-dropdown-menu-active-text-color:#e2e2ff;
+
+  /**vxe-table**/
+  --vxe-table--header-bg-color:#dde4f0;
+  --vxe-table--header-hover-bg-color:#dde4f0;
+  --vxe-table--header-active-bg-color:#d0cdde;
+  --vxe-table--header-text-color:#433D63;
+  --vxe-table-text-color:#615B7C;
+
+  --vxe-table-popover-item-border-color:#9994b3;
+  --vxe-table-popover-item-text-color:#433D63;
+  --vxe-table-popover-item-text-del-color:#E85D3A;
+  --vxe-table-popover-item-bg-color:#dde4f0;
+  --vxe-table-popover-item-hover-bg-color:#d0cdde;
+
+  /**api**/
+  --deleteDialog-btn-bg-color:#e8f0fe;
+  --deleteDialog-btn-text-color:#433D63;
+  --deleteDialog-btn-text-active-color:#E2E2FF;
+
+
+  /**pricePlan2**/
+
+  --pricePlan-bg-color:#dde4f0;
+  --pricePlan-border-color:#b1abcf;
+
+  --pricePlan-title-color:#433d63;
+  --pricePlan-text-color:#66637c;
+  --pricePlan-tab-view-bg-color:#e8f0fe;
+
+  --pricePlan-purple-color:#8167FF;
+
+  --pricePlan-nodata-bg--color:#615B7C;
+
+
+}
+
+/* 内容区放大时，将不需要的组件隐藏 */
+body.content-large {
+  /* Header 区域 = TagsView 组件 */
+  --v3-header-height: var(--v3-tagsview-height);
+  /* NavigationBar 组件 */
+  --v3-navigationbar-height: 0px;
+  /* Sidebar 组件 */
+  --v3-sidebar-width: 0px;
+  --v3-sidebar-hide-width: 0px;
+}
+
+/* 内容区全屏时，将不需要的组件隐藏 */
+body.content-full {
+  /* Header 区域 */
+  --v3-header-height: 0px;
+  /* NavigationBar 组件 */
+  --v3-navigationbar-height: 0px;
+  /* Sidebar 组件 */
+  --v3-sidebar-width: 0px;
+  --v3-sidebar-hide-width: 0px;
+  /* TagsView 组件 */
+  --v3-tagsview-height: 0px;
+}
+
+

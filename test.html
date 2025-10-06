@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本选择操作组测试页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .example-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .tip {
+            background-color: #e8f4fd;
+            border: 1px solid #b3d9f9;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 30px;
+            color: #155724;
+        }
+        .multilingual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .lang-block {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>文本选择操作组测试页面</h1>
+        
+        <div class="tip">
+            <strong>测试提示：</strong> 在以下文本内容中，用鼠标选中任意文本，操作组应该会在鼠标附近弹出，提供复制、搜索和分享功能。
+        </div>
+        
+        <h2>测试段落 1：普通文本</h2>
+        <div class="example-text">
+            <p>这是一个测试段落，用于测试文本选择操作组功能。您可以尝试选中文本的一部分，或者选中整个段落，看看操作组是否能正常显示。</p>
+            <p>测试内容应该包含足够的文字，以便用户可以进行多种选择方式的测试，包括选择单个词语、选择整行文字、选择多个段落等。</p>
+        </div>
+        
+        <h2>测试段落 2：长文本内容</h2>
+        <div class="highlight-box">
+            <p>这是一个较长的测试段落，包含了更多的文字内容。当您选中文本时，文本选择操作组应该会在鼠标位置附近显示出来。如果文本选择操作组能够正常工作，您应该能够看到包含复制、搜索和分享三个功能的图标按钮。</p>
+            <p>这个测试页面设计用于帮助开发者验证文本选择操作组的功能是否正常，包括定位是否准确、功能是否完整、交互是否流畅等方面。</p>
+            <p>您可以尝试在不同的位置选中文本，例如页面顶部、页面中部、页面底部，以及靠近浏览器边缘的位置，测试操作组的定位算法是否能够正确处理各种边界情况。</p>
+        </div>
+        
+        <h2>测试段落 3：代码和特殊文本</h2>
+        <div class="example-text">
+            <p>这个段落包含了一些特殊格式的文本，例如<code>代码片段</code>和专业术语。您可以尝试选中这些特殊文本，看看操作组是否能够正常工作。</p>
+            <pre>
+// 这是一段示例代码
+function testTextSelection() {
+    console.log('测试文本选择操作组功能');
+    const text = '这是一段用于测试的文本内容';
+    return text;
+}</pre>
+        </div>
+        
+        <h2>多语言测试</h2>
+        <div class="multilingual">
+            <div class="lang-block">
+                <h3>中文</h3>
+                <p>这是中文文本测试，用于验证文本选择操作组在处理中文文本时的表现。</p>
+            </div>
+            <div class="lang-block">
+                <h3>English</h3>
+                <p>This is an English text test to verify the performance of the text selection action group when handling English text.</p>
+            </div>
+            <div class="lang-block">
+                <h3>日本語</h3>
+                <p>これは日本語のテキストテストであり、テキスト選択アクショングループが日本語テキストを処理する際のパフォーマンスを検証するためのものです。</p>
+            </div>
+        </div>
+        
+        <h2>测试段落 4：混合内容</h2>
+        <div class="example-text">
+            <p>这个段落包含了混合内容，既有普通文本，也有数字、符号等。例如，您可以尝试选中数字：123456789，或者特殊符号：!@#$%^&*()，看看操作组是否能够正常识别和处理这些内容。</p>
+            <p>您还可以尝试选中不同长度的文本，从单个字符到多个段落，测试操作组的响应速度和稳定性。</p>
+        </div>
+        
+        <div class="tip">
+            <strong>调试建议：</strong> 如果操作组没有正常显示，您可以按F12打开开发者工具，切换到Console（控制台）选项卡，查看是否有相关的调试信息输出，这将有助于定位问题所在。
+        </div>
+    </div>
+</body>
+</html>

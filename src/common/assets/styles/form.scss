@@ -1,0 +1,557 @@
+
+.app-header-max-width{
+  max-width: 1213px;
+  padding:0 1rem;
+  box-sizing: border-box;
+  width:100%;
+  margin:0 auto;
+}
+.app-border-color{
+  border-color: var(--app-border-color);
+}
+.app-border-bottom{
+  border-bottom: 0.5px solid var(--app-border-color);
+}
+.app-border-top{
+  border-top: 0.5px solid var(--app-border-color);
+}
+.el-drawer{
+  background-color: var(--app-bg-color) !important;
+}
+.el-drawer__body{
+  padding:0 !important;
+}
+.app-form-top-title-view{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  border-bottom: 0.5px solid var(--app-border-color);
+  .app-form-top-title-view-top{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    img{
+      width:20px;
+      height:20px;
+    }
+    span{
+      color: var(--app-form-top-title-color);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
+
+.app-form-main-padding{
+  padding:16px 24px;
+  box-sizing: border-box;
+}
+.app-form-main-form-item{
+  margin-bottom:16px;
+}
+.app-form-title-14{
+  padding:0;
+  color: var(--app-h2-text-Light-color);
+  font-family: 'Alibaba PuHuiTi 2.0';
+  font-weight:bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+.app-form-title-14-4{
+  color: var(--app-form-title-14-4);
+  font-family: "Alibaba PuHuiTi 2.0";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.app-form-title-p{
+  color: var(--app-form-top-title-p);
+  font-family: "Alibaba PuHuiTi 2.0";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.app-form-p{
+  padding:0;
+  color: var(--app-form-p-color);
+  font-family: "Alibaba PuHuiTi 2.0";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.app-form-p-16{
+  color: var(--app-form-p-16);
+  font-family: "Alibaba PuHuiTi 2.0";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.app-form-input{
+  max-width: 400px !important;
+  width:100%;
+  height: 36px;
+  box-sizing: border-box;
+  .el-input__wrapper{
+    border-radius: 8px;
+    background: var(--app-form-input-bg-color);
+    box-shadow: 0 0 0 1px var(--app-border-color) inset;
+    .el-input__inner{
+      background: var(--app-form-input-bg-color);
+    }
+  }
+  .el-input__wrapper.is-focus {
+    box-shadow: 0px 0px 4px var(--Main-1, #8167ff);
+  }
+
+}
+
+.app-form-input-width-100{
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.app-form-input-width{
+  width:100% !important;
+  max-width: none !important;
+}
+
+.app-form-input-textarea{
+  .el-textarea__inner{
+    border-radius: 8px;
+    background: var(--app-form-input-bg-color);
+    box-shadow: 0 0 0 1px var(--app-border-color) inset;
+  }
+  .el-textarea__inner:focus {
+    box-shadow: 0px 0px 4px var(--Main-1, #8167ff);
+  }
+}
+.app-form-width{
+  width:400px ;
+}
+.app-form-select{
+  width: 400px !important;
+  height: 36px;
+  box-sizing: border-box;
+  .el-select__wrapper{
+    height: 36px;
+    border-radius: 8px;
+    background: var(--app-form-input-bg-color);
+    box-shadow: 0 0 0 1px var(--app-border-color) inset;
+  }
+  .el-select__wrapper.is-focused {
+    box-shadow: 0px 0px 4px var(--Main-1, #8167ff);
+  }
+}
+.app-form-select-popper{
+  padding: 4px;
+  border-radius: 8px !important;
+  box-sizing: border-box;
+  background: var(--app-form-input-bg-color);
+  box-shadow: 0 0 0 1px var(--app-border-color) !important;
+  .el-select-dropdown__item.is-selected{
+    background: var(--app-select-isselected-color);
+    box-shadow: 0 0 0 1px var(--app-border-color) !important;
+    border-radius:4px;
+    color:#fff;
+  }
+  .el-select-dropdown__item.is-hovering {
+    background: var(--app-select-isselected-color);
+    box-shadow: 0 0 0 1px var(--app-border-color) !important;
+    border-radius:4px;
+    color:#fff;
+  }
+  .el-popper__arrow{
+    display: none;
+  }
+}
+.app-form-select-100{
+  width:100% !important;
+}
+.app-form-select-width-all{
+  width:100% !important;
+}
+
+.app-form-main-form-item-box{
+  display: flex;
+  flex-direction: column;
+  .top{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    span{
+      color: var(--app-form-top-title-color);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .p1{
+    padding:0;
+    color: var(--app-form-main-form-item-box-p1-color);
+    font-family: "Alibaba PuHuiTi 2.0";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+
+.app-form-main-form-item-input-box{
+  display: flex;
+  flex-direction: column;
+  gap:4px;
+  width:100%;
+  .app-form-row-rule{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title{
+    color: var(--app-form-top-title-color);
+    font-family: "Alibaba PuHuiTi 2.0";
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+    span{
+      color:red;
+    }
+  }
+}
+.app-form-color-picker{
+  width:20px !important;
+  height:20px !important;
+  border-radius:100%;
+  overflow: hidden;
+  border:0;
+  background:#fff;
+  .el-color-picker__trigger{
+    padding:0;
+    border:0;
+  }
+  .el-color-picker__color{
+    border:0;
+    border-radius:100%;
+
+    i{
+      display: none;
+    }
+  }
+}
+
+
+.app-form-submit-botton{
+  background: var(--app-purpleButton-bg-color) !important;
+  border-color: var(--app-purpleButton-bg-color) !important;
+  box-shadow: 0px 2px 8px var(--app-purpleButton-bg-boxshow-color) !important;
+  padding:0 !important;
+  border-radius: 12px !important;
+  height: fit-content !important;
+  span{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    color:#fff;
+    img{
+      width:20px;
+      height:20px;
+    }
+    .text{
+      color: var(--white-1, #e2e2ff);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .text-noLine{
+      color: var(--white-1, #e2e2ff);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+
+}
+.app-form-submit-botton-nolineheight{
+  background: var(--app-purpleButton-bg-color) !important;
+  border-color: var(--app-purpleButton-bg-color) !important;
+  box-shadow: 0px 2px 8px var(--app-purpleButton-bg-boxshow-color) !important;
+  padding:0 !important;
+  border-radius: 12px !important;
+  height: fit-content !important;
+  span{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    color:#fff;
+    img{
+      width:20px;
+      height:20px;
+    }
+    .text{
+      color: var(--white-1, #e2e2ff);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .text-noLine{
+      color: var(--white-1, #e2e2ff);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+
+}
+.app-form-submit-botton-textType{
+  background: var(--Main-1, #8167ff) !important;
+  //border-color:#8167ff !important;
+  border-color: #8167ff !important;
+  box-shadow: 0px 2px 8px #4532c966 !important;
+  padding:0 !important;
+  border-radius: 12px !important;
+  height: fit-content !important;
+  span{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px !important;
+    padding: 8px 30px !important;
+    color:#fff;
+    img{
+      width:20px;
+      height:20px;
+    }
+    .text{
+      color: var(--white-1, #e2e2ff);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+
+}
+.app-form-submit-botton-textType-default{
+  border-color: #b1abcf !important;
+  padding:0 !important;
+  border-radius: 12px !important;
+  height: fit-content !important;
+  background: var(--Bg-2, #e8f0fe) !important;
+  span{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px !important;
+    padding: 8px 30px !important;
+
+    img{
+      width:20px;
+      height:20px;
+    }
+    .text{
+      color: var(--Text-1, #433d63);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+}
+.app-form-submit-botton-error{
+  background: var(--app-form-submit-botton-error) !important;
+  box-shadow: none !important;
+  border: none !important;
+
+}
+.app-form-submit-botton-width-100{
+  width:100% !important;
+}
+.app-row-col{
+  display: flex;
+  align-items: center;
+  gap:16px;
+}
+.app-form-border-view{
+  max-width:689px;
+  border:0.5px solid var(--app-border-color);
+  border-top-left-radius:16px;
+  border-top-right-radius:16px;
+  border-bottom-left-radius:24px;
+  border-bottom-right-radius:24px;
+
+}
+.app-form-options-view{
+  display: flex;
+  gap:2px;
+  align-items: center;
+  .item{
+    padding: 8px;
+    border-radius: 8px;
+    border: 0.5px solid var(--options-view-btn-border-color);
+    box-sizing: border-box;
+    background: var(--options-view-btn-bg-color);
+    color: var(--options-view-btn-text-color);
+    font-family: "Alibaba PuHuiTi 2.0";
+    font-weight: 400;
+    font-size: 14px;
+
+    &:hover{
+      background: var(--options-view-btn-bg-color);
+      color: var(--options-view-btn-text-color);
+    }
+  }
+  .item-active{
+    background: var(--options-view-btn-active-bg-color);
+    color:var(--options-view-btn-active-text-color);
+  }
+}
+.app-form-row-box{
+  display: grid;
+  gap:16px;
+  grid-template-columns: repeat(1, 1fr);
+  width:100%;
+}
+
+@media (min-width: 700px) {
+  .app-form-row-box{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+$theme-text-color: red;
+
+
+.testtext{
+  color:$theme-text-color;
+}
+//表单竖行排列
+.app-portrait-form-item{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .el-form-item__label{
+    justify-content: flex-start;
+    height:20px;
+    line-height:20px;
+    margin-bottom:6px;
+    color:var(--app-login-text-color);
+  }
+  .el-form-item__content{
+    .el-form-item__error{
+      display: flex;
+      align-items: center;
+      top:-75% !important;
+      color: var(--Utility-red, #e85d3a);
+      font-family: "Alibaba PuHuiTi 2.0";
+      font-weight: 400;
+      font-size: 16px;
+      &:before{
+        content:'';
+        width:12px;
+        height:12px;
+        background-size: 100% 100%;
+        margin-right:4px;
+      }
+
+    }
+  }
+
+  .app-form-item-right-text{
+    position: absolute;
+    right:0;
+    top:-28px;
+    color: var(--app-login-text-color);
+    font-family: "Alibaba PuHuiTi 2.0";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+}
+
+
+.app-form-item-after{
+  .el-form-item__label-wrap{
+    margin-left:0px !important;
+    .el-form-item__label{
+      &:before{
+        display: none !important;
+      }
+      &:after{
+        content: "*";
+        color: var(--el-color-danger);
+      }
+    }
+  }
+}
+//红点右边显示
+.app-form-item-after.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label:after{
+  content: "*";
+  color: var(--el-color-danger);
+}
+.app-form-item-after.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label:before{
+  display: none !important;
+}
+.is-checked{
+  .el-switch__core{
+    border-color:var(--app-switch-default-is-checked-bg-color) !important;
+    background: var(--app-switch-default-is-checked-bg-color) !important;
+  }
+}
+.el-switch__label{
+  height:auto;
+  span{
+    color: var(--app-h2-text-Light-color);
+    font-family: "Alibaba PuHuiTi 2.0";
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+.el-switch__label--left{
+  margin-right:16px;
+}
+.el-switch__label--right{
+  margin-left:16px;
+}
+.el-switch__core{
+  width:44px !important;
+  height:24px !important;
+  border-radius:12px !important;
+  border:0 !important;
+  background: var(--app-switch-default-bg-color) !important;
+  .el-switch__action{
+    background: var(--app-switch-action-bg-color) !important;
+    box-shadow: 0px 0px 4px #29263bb3;
+    //left: calc(100% - 20px) !important;
+  }
+}
+
+.el-checkbox__label{
+  color:var(--app-form-top-title-p) !important;
+}
+.el-checkbox__inner{
+  background: var(--app-purpleButton-bg-color) !important;
+}
+.el-checkbox__input.is-checked .el-checkbox__inner{
+  border-color:var(--app-purpleButton-bg-color) !important;
+}
+.el-dialog{
+  background: var(--app-Dialog-bg-color) !important;
+}
