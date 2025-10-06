@@ -1,6 +1,8 @@
 // 修复导入语句
 import { createApp } from 'vue'
-import TextSelectionActions from './ContextMenu.vue'
+import TextSelectionActions from './quickAction/ContextMenu.vue'
+import { initBaiduSidebar } from './webAssistant/baidu/baiduSidebar.js'
+import { initLinkDragHandler } from './webAssistant/link/linkDragHandler.js'
 
 // 初始化文本选择操作组
 function initTextSelectionActions() {
@@ -170,7 +172,13 @@ function showNotification(message) {
 
 // 在DOM加载完成后初始化
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initTextSelectionActions)
+  document.addEventListener('DOMContentLoaded', () => {
+    initTextSelectionActions()
+    initBaiduSidebar()
+    initLinkDragHandler()
+  })
 } else {
   initTextSelectionActions()
+  initBaiduSidebar()
+  initLinkDragHandler()
 }

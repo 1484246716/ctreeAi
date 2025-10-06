@@ -132,7 +132,7 @@ export default defineConfig({
         }
         
         // 复制style.css
-        const styleSrc = resolve(__dirname, 'src/google/style.css')
+        const styleSrc = resolve(__dirname, 'src/google/quickAction/style.css')
         const styleDest = resolve(__dirname, 'dist/style.css')
         if (existsSync(styleSrc)) {
           copyFileSync(styleSrc, styleDest)
