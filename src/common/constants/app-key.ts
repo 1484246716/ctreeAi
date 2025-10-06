@@ -9,7 +9,8 @@ export enum LayoutModeEnum {
   Left = "left",
   Right= "right",
   Top = "top",
-  LeftTop = "left-top"
+  LeftTop = "left-top",
+  SettingsLeft = "Settings-left",
 }
 
 /** 侧边栏打开状态常量 */

@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import TextSelectionActions from './quickAction/ContextMenu.vue'
 import { initBaiduSidebar } from './webAssistant/baidu/baiduSidebar.js'
 import { initLinkDragHandler } from './webAssistant/link/linkDragHandler.js'
+import { initQuickActionButtons } from './quickAction/initQuickActionButtons.js'
 
 // 初始化文本选择操作组
 function initTextSelectionActions() {
@@ -176,9 +177,11 @@ if (document.readyState === 'loading') {
     initTextSelectionActions()
     initBaiduSidebar()
     initLinkDragHandler()
+    initQuickActionButtons()
   })
 } else {
   initTextSelectionActions()
   initBaiduSidebar()
   initLinkDragHandler()
+  initQuickActionButtons()
 }

@@ -8,6 +8,7 @@ import {defaultRouter} from "./modules/default.ts"
 const Layouts = () => import("@/layouts/index.vue")
 import {admin} from "./modules/admin.ts"
 import {sidebarRouter} from "@/router/modules/sidebar.ts";
+import {settingsRouter} from "./modules/settings";
 
 
 /**
@@ -76,7 +77,8 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: Layouts,
     redirect: "/Chat",
     children: [
-      ...sidebarRouter
+      ...sidebarRouter,
+      ...settingsRouter
     ]
   },
 ]

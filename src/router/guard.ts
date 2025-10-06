@@ -22,11 +22,18 @@ export function registerNavigationGuard(router: Router) {
   router.beforeEach(async (to, _from) => {
     const settingsStore = useSettingsStore()
     // NProgress.start()
+    console.log(to,'==to===')
     if(to.meta.roles?.includes('admin')){//admin左侧模式，其他top模式
       console.log('==========跳转执行==========')
       settingsStore.layoutMode =LayoutModeEnum.Right
+      if(to.meta.roles?.includes('settings')){
+        settingsStore.layoutMode =LayoutModeEnum.SettingsLeft
+      }
     }else{
       settingsStore.layoutMode =LayoutModeEnum.Top
+      if(to.meta.roles?.includes('settings')){
+        settingsStore.layoutMode =LayoutModeEnum.SettingsLeft
+      }
     }
     const userStore = useUserStore()
     const permissionStore = usePermissionStore()

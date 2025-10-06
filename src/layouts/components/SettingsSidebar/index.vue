@@ -6,10 +6,9 @@ import { useAppStore } from "@/pinia/stores/app"
 import { usePermissionStore } from "@/pinia/stores/permission"
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { Logo } from "../index"
-import Item from "./Item.vue"
 import routerScrollbar from "./routerScrollbar.vue"
-import upAccount from "./upAccount.vue"
-import userLayout from "./userLayout.vue"
+import upAccount from "../Sidebar/upAccount.vue"
+import userLayout from "../Sidebar/userLayout.vue"
 
 import {router} from "@/router";
 
@@ -31,7 +30,7 @@ const noHiddenRoutes = computed(() => {
   routsList=routsList.slice(1)
   console.log(routsList,'==routsList所有路由==');
   return routsList;//只展示admin路由
- })
+})
 
 console.log(noHiddenRoutes.value,'==noHiddenRoutes==')
 
@@ -42,11 +41,13 @@ const isLogo = computed(() => isLeft.value && settingsStore.showLogo)
 const tipLineWidth = computed(() => !isTop.value ? "2px" : "0px")
 const menus = ref(null);
 const handleClose = (key, keyPath) => {
-  menus.value.open(key);
+  if (menus.value && menus.value.open) {
+    menus.value.open(key);
+  }
 };
 
 const openNewUrl=()=>{
-  window.open("/general", "_blank");
+  window.open("/features", "_blank");
 }
 </script>
 
