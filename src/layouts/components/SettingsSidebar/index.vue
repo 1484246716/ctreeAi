@@ -6,7 +6,7 @@ import { useAppStore } from "@/pinia/stores/app"
 import { usePermissionStore } from "@/pinia/stores/permission"
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { Logo } from "../index"
-import routerScrollbar from "./routerScrollbar.vue"
+import routerScrollbar from "./Scrollbar.vue"
 import upAccount from "../Sidebar/upAccount.vue"
 import userLayout from "../Sidebar/userLayout.vue"
 

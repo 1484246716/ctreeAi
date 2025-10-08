@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Item from "@/layouts/components/Sidebar/Item.vue";
+import Item from "./Item.vue";
 import {useAppStore} from "@/pinia/stores/app.ts";
 import {useLayoutMode} from "@@/composables/useLayoutMode.ts";
 import {usePermissionStore} from "@/pinia/stores/permission.ts";

@@ -191,52 +191,204 @@ const handleShare = () => {
 }
 
 // 打开侧边栏函数
-const openSidebar = async () => {
+const openSidebar = () => {
   try {
-    // 检查是否在浏览器扩展环境中
+    console.log('准备打开侧边栏，检查Chrome API环境');
     if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+      console.log('Chrome API可用，准备发送openSidebar消息');
       // 通过消息通知background script打开侧边栏
       chrome.runtime.sendMessage({ action: 'openSidebar' }, (response) => {
+        console.log('收到background.js响应:', response);
+        if (chrome.runtime.lastError) {
+          console.error('打开侧边栏失败 - Chrome API错误:', chrome.runtime.lastError.message);
+          showNotification('打开侧边栏失败: ' + chrome.runtime.lastError.message, 'error');
+          return;
+        }
         if (response && response.success) {
           showNotification('侧边栏已打开');
-          console.log('通过消息通信打开侧边栏');
+          console.log('通过消息通信打开侧边栏成功');
         } else {
-          console.warn('background script未响应打开侧边栏请求');
-          showNotification('打开侧边栏失败', 'error');
+          console.warn('background script未响应打开侧边栏请求或响应失败:', response);
+          showNotification('打开侧边栏失败: 后台服务未响应', 'error');
         }
       });
     } else {
       // 不在扩展环境中
+      console.error('浏览器环境不支持扩展侧边栏');
       showNotification('浏览器环境不支持扩展侧边栏', 'error');
     }
   } catch (error) {
     console.error('打开侧边栏时出错:', error);
-    showNotification('打开侧边栏失败', 'error');
+    showNotification('打开侧边栏失败: ' + error.message, 'error');
   }
 }
 
 // 关闭侧边栏函数
-const closeSidebar = async () => {
+const closeSidebar = () => {
   try {
-    // 检查是否在浏览器扩展环境中
+    console.log('准备关闭侧边栏，检查Chrome API环境');
     if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+      console.log('Chrome API可用，准备发送closeSidebar消息');
       // 通过消息通知background script关闭侧边栏
       chrome.runtime.sendMessage({ action: 'closeSidebar' }, (response) => {
+        console.log('收到background.js响应:', response);
+        if (chrome.runtime.lastError) {
+          console.error('关闭侧边栏失败 - Chrome API错误:', chrome.runtime.lastError.message);
+          showNotification('关闭侧边栏失败: ' + chrome.runtime.lastError.message, 'error');
+          return;
+        }
         if (response && response.success) {
           showNotification('侧边栏已关闭');
-          console.log('通过消息通信关闭侧边栏');
+          console.log('通过消息通信关闭侧边栏成功');
+          
+          // 添加侧边栏关闭状态检测
+          setTimeout(() => {
+            checkSidebarClosedState();
+          }, 300); // 延迟300ms以确保关闭操作完成
         } else {
-          console.warn('background script未响应关闭侧边栏请求');
-          showNotification('关闭侧边栏失败', 'error');
+          console.warn('background script未响应关闭侧边栏请求或响应失败:', response);
+          showNotification('关闭侧边栏失败: 后台服务未响应', 'error');
         }
       });
     } else {
       // 不在扩展环境中
+      console.error('浏览器环境不支持扩展侧边栏');
       showNotification('浏览器环境不支持扩展侧边栏', 'error');
     }
   } catch (error) {
     console.error('关闭侧边栏时出错:', error);
-    showNotification('关闭侧边栏失败', 'error');
+    showNotification('关闭侧边栏失败: ' + error.message, 'error');
+  }
+}
+
+// 检查侧边栏是否已关闭的辅助函数
+const checkSidebarClosedState = () => {
+  try {
+    // 增强API环境检查
+    console.log('开始检测侧边栏关闭状态 - 检查API环境');
+    
+    if (typeof chrome === 'undefined') {
+      console.warn('无法检测侧边栏状态 - 浏览器不支持Chrome扩展API');
+      // 尝试通过直接检查DOM的方式判断（备选方案）
+      checkSidebarStateFallback();
+      return;
+    }
+    
+    if (!chrome.tabs) {
+      console.warn('无法检测侧边栏状态 - Chrome tabs API不可用');
+      checkSidebarStateFallback();
+      return;
+    }
+    
+    if (!chrome.sidePanel) {
+      console.warn('无法检测侧边栏状态 - Chrome sidePanel API不可用');
+      checkSidebarStateFallback();
+      return;
+    }
+    
+    console.log('Chrome API环境检查通过，准备获取当前标签页');
+    
+    // 先获取当前活动标签页
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (chrome.runtime.lastError) {
+        console.error('获取标签页时出错:', chrome.runtime.lastError.message);
+        checkSidebarStateFallback();
+        return;
+      }
+      
+      if (!tabs || tabs.length === 0) {
+        console.warn('未找到活动标签页');
+        checkSidebarStateFallback();
+        return;
+      }
+      
+      const tabId = tabs[0].id;
+      console.log('获取到活动标签页，tabId:', tabId);
+      
+      // 方法1: 使用isOpen API (Chrome 116+支持)
+      if (chrome.sidePanel.isOpen) {
+        console.log('使用chrome.sidePanel.isOpen API检测侧边栏状态');
+        chrome.sidePanel.isOpen({ tabId: tabId }, (isOpen) => {
+          if (chrome.runtime.lastError) {
+            console.warn('检测侧边栏状态时出错:', chrome.runtime.lastError.message);
+            // 尝试备选方法
+            checkSidebarStateWithOptions(tabId);
+            return;
+          }
+          console.log(`侧边栏实际关闭状态检测结果: ${!isOpen}`);
+          if (!isOpen) {
+            console.log('✅ 侧边栏已成功关闭');
+          } else {
+            console.warn('⚠️ 侧边栏仍处于打开状态');
+          }
+        });
+      } else {
+        // 备选方法: 使用getOptions检查状态
+        console.log('chrome.sidePanel.isOpen API不可用，使用getOptions备选方法');
+        checkSidebarStateWithOptions(tabId);
+      }
+    });
+  } catch (error) {
+    console.error('检测侧边栏关闭状态时发生错误:', error);
+    // 尝试备选方案
+    checkSidebarStateFallback();
+  }
+}
+
+// 使用getOptions检查侧边栏状态的辅助函数
+const checkSidebarStateWithOptions = (tabId) => {
+  if (chrome.sidePanel.getOptions) {
+    console.log('使用chrome.sidePanel.getOptions API检测侧边栏状态');
+    chrome.sidePanel.getOptions({ tabId: tabId }, (options) => {
+      if (chrome.runtime.lastError) {
+        console.warn('使用getOptions检测侧边栏状态时出错:', chrome.runtime.lastError.message);
+        checkSidebarStateFallback();
+        return;
+      }
+      // 根据options推断侧边栏状态
+      // 注意: getOptions不会直接返回是否打开，需要结合其他信息判断
+      console.log('侧边栏选项:', options);
+      if (options && options.enabled === false) {
+        console.log('✅ 侧边栏已被禁用（已关闭）');
+      } else {
+        console.log('侧边栏状态检查结果: 可能已关闭，但无法完全确认');
+        checkSidebarStateFallback();
+      }
+    });
+  } else {
+    console.warn('当前Chrome版本不支持sidePanel.getOptions API');
+    checkSidebarStateFallback();
+  }
+}
+
+// DOM检查备选方案（当Chrome API不可用时）
+const checkSidebarStateFallback = () => {
+  console.log('使用DOM检查备选方案确认侧边栏状态');
+  
+  try {
+    // 检查是否存在侧边栏相关的DOM元素
+    // 注意：这只是一个启发式方法，不是完全可靠的
+    const hasSidebarElement = document.querySelector('div[class*="side-panel"], div[id*="side-panel"]') !== null;
+    
+    // 检查页面宽度变化（侧边栏打开/关闭会影响内容区域宽度）
+    const viewportWidth = window.innerWidth;
+    const contentWidth = document.body.clientWidth;
+    const widthRatio = contentWidth / viewportWidth;
+    
+    console.log('DOM检查结果 - 检测到侧边栏元素:', hasSidebarElement);
+    console.log(`DOM检查结果 - 内容宽度/视口宽度比率: ${widthRatio.toFixed(3)}`);
+    
+    // 根据启发式规则判断
+    if (!hasSidebarElement && widthRatio > 0.95) {
+      console.log('✅ 侧边栏可能已成功关闭（基于DOM检查）');
+    } else if (hasSidebarElement && widthRatio < 0.85) {
+      console.log('⚠️ 侧边栏可能仍处于打开状态（基于DOM检查）');
+    } else {
+      console.log('侧边栏状态无法通过DOM检查确定，建议通过视觉确认');
+    }
+  } catch (error) {
+    console.error('执行DOM检查备选方案时出错:', error);
+    console.log('侧边栏关闭状态已通过消息确认，实际状态可通过视觉确认');
   }
 }
 
