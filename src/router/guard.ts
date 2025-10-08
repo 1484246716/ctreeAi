@@ -28,11 +28,19 @@ export function registerNavigationGuard(router: Router) {
       settingsStore.layoutMode =LayoutModeEnum.Right
       if(to.meta.roles?.includes('settings')){
         settingsStore.layoutMode =LayoutModeEnum.SettingsLeft
+      }else if(to.meta.roles?.includes('agents')){
+        settingsStore.layoutMode =LayoutModeEnum.AgentsLeft
+      }else if(to.meta.roles?.includes('image')){
+        settingsStore.layoutMode =LayoutModeEnum.isImage
       }
     }else{
       settingsStore.layoutMode =LayoutModeEnum.Top
       if(to.meta.roles?.includes('settings')){
         settingsStore.layoutMode =LayoutModeEnum.SettingsLeft
+      }else if(to.meta.roles?.includes('agents')){
+        settingsStore.layoutMode =LayoutModeEnum.AgentsLeft
+      }else if(to.meta.roles?.includes('image')){
+        settingsStore.layoutMode =LayoutModeEnum.isImage
       }
     }
     const userStore = useUserStore()

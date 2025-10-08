@@ -77,6 +77,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: Layouts,
     redirect: "/Chat",
     children: [
+      ...defaultRouter,
       ...sidebarRouter,
       ...settingsRouter
     ]

@@ -10,6 +10,10 @@ const isTop = computed(() => settingsStore.layoutMode === LayoutModeEnum.Top)
 
 const isLeftTop = computed(() => settingsStore.layoutMode === LayoutModeEnum.LeftTop)
 const isSettings = computed(() => settingsStore.layoutMode === LayoutModeEnum.SettingsLeft)
+const isAgents = computed(() => settingsStore.layoutMode === LayoutModeEnum.AgentsLeft)
+const isImage = computed(() => settingsStore.layoutMode === LayoutModeEnum.isImage)
+
+
 
 function setLayoutMode(mode: LayoutModeEnum) {
   settingsStore.layoutMode = mode
@@ -17,5 +21,5 @@ function setLayoutMode(mode: LayoutModeEnum) {
 
 /** 布局模式 Composable */
 export function useLayoutMode() {
-  return { isLeft,isRight, isTop, isLeftTop,isSettings, setLayoutMode }
+  return { isLeft,isRight, isTop, isLeftTop,isSettings,isAgents,isImage, setLayoutMode }
 }

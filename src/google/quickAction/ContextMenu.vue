@@ -15,6 +15,14 @@
     <div class="action-item" @click="handleShare" data-tooltip="分享文本">
       <span class="action-icon">📤</span>
     </div>
+    <div class="action-item" @click="openSidebar">
+      <span class="action-icon">📑</span>
+      <span class="tooltip">打开侧边栏</span>
+    </div>
+    <div class="action-item" @click="closeSidebar">
+      <span class="action-icon">📕</span>
+      <span class="tooltip">关闭侧边栏</span>
+    </div>
     <div class="action-item" @click="toggleDropdown">
       <span class="action-icon">⋯</span>
       <span class="tooltip">更多操作</span>
@@ -180,6 +188,56 @@ const handleShare = () => {
     showNotification('您的浏览器不支持分享功能', 'warning')
   }
   // 不隐藏操作组，保持显示状态
+}
+
+// 打开侧边栏函数
+const openSidebar = async () => {
+  try {
+    // 检查是否在浏览器扩展环境中
+    if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+      // 通过消息通知background script打开侧边栏
+      chrome.runtime.sendMessage({ action: 'openSidebar' }, (response) => {
+        if (response && response.success) {
+          showNotification('侧边栏已打开');
+          console.log('通过消息通信打开侧边栏');
+        } else {
+          console.warn('background script未响应打开侧边栏请求');
+          showNotification('打开侧边栏失败', 'error');
+        }
+      });
+    } else {
+      // 不在扩展环境中
+      showNotification('浏览器环境不支持扩展侧边栏', 'error');
+    }
+  } catch (error) {
+    console.error('打开侧边栏时出错:', error);
+    showNotification('打开侧边栏失败', 'error');
+  }
+}
+
+// 关闭侧边栏函数
+const closeSidebar = async () => {
+  try {
+    // 检查是否在浏览器扩展环境中
+    if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+      // 通过消息通知background script关闭侧边栏
+      chrome.runtime.sendMessage({ action: 'closeSidebar' }, (response) => {
+        if (response && response.success) {
+          showNotification('侧边栏已关闭');
+          console.log('通过消息通信关闭侧边栏');
+        } else {
+          console.warn('background script未响应关闭侧边栏请求');
+          showNotification('关闭侧边栏失败', 'error');
+        }
+      });
+    } else {
+      // 不在扩展环境中
+      showNotification('浏览器环境不支持扩展侧边栏', 'error');
+    }
+  } catch (error) {
+    console.error('关闭侧边栏时出错:', error);
+    showNotification('关闭侧边栏失败', 'error');
+  }
 }
 
 // 显示通知的辅助函数

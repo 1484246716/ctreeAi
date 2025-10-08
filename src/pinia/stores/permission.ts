@@ -5,6 +5,8 @@ import { routerConfig } from "@/router/config"
 import { flatMultiLevelRoutes } from "@/router/helper"
 import {defaultRouter} from "@/router/modules/default.ts"
 import {settingsRouter} from "@/router/modules/settings"
+import {agentsRoutes} from "@/router/modules/agents.ts"
+import {imageRoutes} from "@/router/modules/image.ts"
 
 function hasPermission(roles: string[], route: RouteRecordRaw) {
   const routeRoles = route.meta?.roles
@@ -36,8 +38,8 @@ export const usePermissionStore = defineStore("permission", () => {
   // 根据角色生成可访问的 Routes（可访问的路由 = 常驻路由 + 有访问权限的动态路由）
   const setRoutes = (roles: string[]) => {
     console.log(roles,'==roles permission===')
-    // 合并 defaultRouter 和 settingsRouter 并根据角色过滤
-    const allRoutes = [...defaultRouter, ...settingsRouter]
+    // 合并 defaultRouter、settingsRouter、agentsRoutes 和 imageRoutes 并根据角色过滤
+    const allRoutes = [...defaultRouter, ...settingsRouter, ...agentsRoutes, ...imageRoutes]
     const accessedRoutes = filterDynamicRoutes(allRoutes, roles)
     console.log(accessedRoutes,'==accessedRoutes==')
     set(accessedRoutes)
@@ -45,7 +47,7 @@ export const usePermissionStore = defineStore("permission", () => {
 
   // 所有路由 = 所有常驻路由 + 所有动态路由
   const setAllRoutes = () => {
-    set([...defaultRouter, ...settingsRouter])
+    set([...defaultRouter, ...settingsRouter, ...agentsRoutes, ...imageRoutes])
   }
 
   // 统一设置

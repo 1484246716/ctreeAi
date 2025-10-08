@@ -51,37 +51,50 @@ watch(sidebarVisible, (newValue) => {
   // 在实际应用中，这里可以通过事件或API通知父组件侧边栏状态变化
 })
 
+// 显示通知的辅助函数
+const showNotification = (message, type = 'success') => {
+  // 创建一个通知元素
+  const notification = document.createElement('div')
+  notification.className = `vue-context-menu-notification ${type}`
+  notification.textContent = message
+  document.body.appendChild(notification)
+  
+  // 1.5秒后自动移除通知
+  setTimeout(() => {
+    notification.classList.add('fade-out')
+    setTimeout(() => {
+      document.body.removeChild(notification)
+    }, 300)
+  }, 1500)
+}
+
 // 切换侧边栏显示/隐藏
 const toggleSidebar = async () => {
   try {
     // 检查是否在浏览器扩展环境中
-    if (typeof chrome !== 'undefined' && chrome.sidePanel) {
-      // 获取当前标签页
-      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+      // 根据当前状态决定是打开还是关闭侧边栏
+      const action = sidebarVisible.value ? 'closeSidebar' : 'openSidebar';
       
-      // 尝试获取侧边栏状态
-      const isOpen = await chrome.sidePanel.getOptions(tab.id);
-      
-      if (isOpen && isOpen.enabled) {
-        // 如果侧边栏已打开，则关闭
-        await chrome.sidePanel.setOptions({ tabId: tab.id, enabled: false });
-        sidebarVisible.value = false;
-        console.log('关闭谷歌侧边栏');
-      } else {
-        // 如果侧边栏未打开，则打开
-        await chrome.sidePanel.open({ tabId: tab.id });
-        sidebarVisible.value = true;
-        console.log('打开谷歌侧边栏');
-      }
+      // 通过消息通知background script
+      chrome.runtime.sendMessage({ action: action }, (response) => {
+        if (response && response.success) {
+          // 更新侧边栏状态
+          sidebarVisible.value = !sidebarVisible.value;
+          showNotification(action === 'openSidebar' ? '侧边栏已打开' : '侧边栏已关闭');
+          console.log(`通过消息通信${action === 'openSidebar' ? '打开' : '关闭'}侧边栏`);
+        } else {
+          console.warn(`background script未响应${action === 'openSidebar' ? '打开' : '关闭'}侧边栏请求`);
+          showNotification(`${action === 'openSidebar' ? '打开' : '关闭'}侧边栏失败`, 'error');
+        }
+      });
     } else {
-      // 不在扩展环境中，仅模拟切换UI状态
-      sidebarVisible.value = !sidebarVisible.value;
-      console.log('切换侧边栏UI状态:', sidebarVisible.value ? '展开' : '收起');
+      // 不在扩展环境中
+      showNotification('浏览器环境不支持扩展侧边栏', 'error');
     }
   } catch (error) {
-    console.error('控制侧边栏时出错:', error);
-    // 出错时仍切换UI状态，确保用户体验
-    sidebarVisible.value = !sidebarVisible.value;
+    console.error('切换侧边栏时出错:', error);
+    showNotification('切换侧边栏失败', 'error');
   }
 }
 

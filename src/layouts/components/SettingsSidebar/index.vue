@@ -56,7 +56,7 @@ const openNewUrl=()=>{
     <div class="Sidebar-top">
       <Logo v-if="isLogo" :collapse="isCollapse" />
       <routerScrollbar />
-      <div @click="openNewUrl">跳转</div>
+      <div @click="openNewUrl">其他</div>
     </div>
     <div class="Sidebar-bottom">
       <upAccount v-if="!isCollapse" />

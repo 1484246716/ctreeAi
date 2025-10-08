@@ -3,7 +3,8 @@ import { useDevice } from "@@/composables/useDevice"
 import { useLayoutMode } from "@@/composables/useLayoutMode"
 import { useAppStore } from "@/pinia/stores/app"
 import { useSettingsStore } from "@/pinia/stores/settings"
-import { AppMain, NavigationBar, Sidebar, TagsView } from "../components"
+import { AppMain, NavigationBar, TagsView } from "../components"
+import AgentsSidebar from  "../components/AgentsSidebar/index.vue"
 import { useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
@@ -20,8 +21,8 @@ const { showTagsView, fixedHeader } = storeToRefs(settingsStore)
 /** 定义计算属性 layoutClasses，用于控制布局的类名 */
 const layoutClasses = computed(() => {
   return {
-    hideSidebar: !appStore.sidebar.opened,//控制侧边缩小
-    openSidebar: appStore.sidebar.opened,
+    hideSidebar: false,//!appStore.sidebar.opened,//控制侧边缩小
+    openSidebar: true,//appStore.sidebar.opened,
     mobile: isMobile.value,
     noLeft: !isLeft.value
   }
@@ -31,61 +32,21 @@ const layoutClasses = computed(() => {
 function handleClickOutside() {
   appStore.closeSidebar(false)
 }
-// 提取公共路由搜索函数
-const findRoute = (routes, path) => {
-  for (const route of routes) {
-    if (route.path === path) return route
-    if (route.children) {
-      const found = findRoute(route.children, path)
-      if (found) return found
-    }
-  }
-  return undefined
-}
-
-// 修正第三层级判断逻辑
-const hasThirdLevelRoutes = computed(() => {
-  // 获取当前激活的第二层级路由路径
-  const activeSecondLevelPath = route.matched[1]?.path
-  if (!activeSecondLevelPath) return false
-
-  // 搜索完整路由表找到对应路由
-  const secondLevelRoute = findRoute(router.getRoutes(), activeSecondLevelPath)
-  // 判断是否存在子路由
-  return !!secondLevelRoute?.children?.length
-})
-
-// 新增第四层级判断逻辑
-const hasFourthLevelRoutes = computed(() => {
-  // 获取当前激活的第三层级路由路径
-  const activeThirdLevelPath = route.matched[2]?.path
-  if (!activeThirdLevelPath) return false
-  // 搜索完整路由表找到对应路由
-  const thirdLevelRoute = findRoute(router.getRoutes(), activeThirdLevelPath)
-  // 判断是否存在子路由
-  return !!thirdLevelRoute?.children?.length
-})
-
 </script>
 
 <template>
   <div :class="layoutClasses" class="app-wrapper">
     <!-- mobile 端侧边栏遮罩层 -->
     <div v-if="layoutClasses.mobile && layoutClasses.openSidebar" class="drawer-bg" @click="handleClickOutside" />
+    <!-- 左侧边栏 -->
+    <AgentsSidebar class="sidebar-container" />
     <!-- 主容器 -->
     <div :class="{ hasTagsView: showTagsView }" class="main-container">
-      <!-- 头部导航栏和标签栏 -->
-      <div :class="{ 'fixed-header': fixedHeader }" class="layout-header">
-        <NavigationBar />
-        <!--        <TagsView v-show="showTagsView" />-->
-      </div>
       <div class="app-main-box">
         <!-- 页面主体内容 -->
         <AppMain class="app-main" />
       </div>
     </div>
-    <!-- 右侧边栏 -->
-    <Sidebar class="sidebar-container" />
   </div>
 </template>
 
@@ -122,7 +83,7 @@ $transition-time: 0.35s;
   position: fixed;
   top: 0;
   bottom: 0;
-  right: 0;
+  left: 0;
   z-index: 1001;
   overflow: hidden;
 }
@@ -135,11 +96,11 @@ $transition-time: 0.35s;
   //border-radius:16px;
   //border-bottom: 0.5px solid #b1abcf;
   margin-top:16px;
-  margin-left:32px;
+  margin-right:32px;
   min-height:calc(100vh - 32px);
   height:calc(100% - 32px);
   box-sizing: border-box;
-  margin-right: var(--v3-sidebar-width);
+  margin-left: var(--v3-sidebar-width);
   position: relative;
   display: flex; /* 添加flex布局 */
   flex-direction: column; /* 垂直排列子元素 */
@@ -222,7 +183,7 @@ $transition-time: 0.35s;
     width: var(--v3-sidebar-hide-width);
   }
   .main-container {
-    margin-right: var(--v3-sidebar-hide-width);
+    margin-left: var(--v3-sidebar-hide-width);
   }
 }
 

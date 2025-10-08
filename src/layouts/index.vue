@@ -12,6 +12,7 @@ import RightMode from "./modes/RightMode.vue"
 import LeftTopMode from "./modes/LeftTopMode.vue"
 import TopMode from "./modes/TopMode.vue"
 import SettingsLeft from "./modes/SettingsLeft.vue"
+import AgentsLeft from "./modes/AgentsLeft.vue"
 // Layout 布局响应式
 useResize()
 
@@ -19,7 +20,7 @@ const { setWatermark, clearWatermark } = useWatermark()
 
 const { isMobile } = useDevice()
 
-const { isLeft,isRight, isTop, isLeftTop,isSettings } = useLayoutMode()
+const { isLeft,isRight, isTop, isLeftTop,isSettings,isAgents,isImage } = useLayoutMode()
 
 const settingsStore = useSettingsStore()
 
@@ -43,15 +44,20 @@ watchEffect(() => {
 
 <template>
   <div class="page">
-    <!-- 顶部模式 -->
+
     <TopMode v-if="isTop" />
-    <!-- 左侧模式 -->
+
+    <!-- 侧边栏全屏布局模式 -->
     <LeftMode v-else-if="isLeft" />
+    <!-- 默认侧边栏布局模式 -->
     <RightMode v-else-if="isRight" />
 <!--    &lt;!&ndash; 混合模式 &ndash;&gt;-->
 <!--    <LeftTopMode v-else-if="isLeft&&isMobile" />-->
-
+    <!--功能设置布局模式-->
     <SettingsLeft v-else-if="isSettings" />
+    <!--Agents功能布局模式||image布局模式-->
+    <AgentsLeft v-else-if="isAgents||isImage" />
+
   </div>
 </template>
 
