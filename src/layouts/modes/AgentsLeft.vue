@@ -104,9 +104,11 @@ $transition-time: 0.35s;
   position: relative;
   display: flex; /* 添加flex布局 */
   flex-direction: column; /* 垂直排列子元素 */
-  border: 0.5px solid  var(--app-border-color);
+  //border: 0.5px solid  var(--app-border-color);
+  background-color: #fff;
+  padding:16px;
   border-radius: 16px;
-
+  align-items: center;
 }
 
 .fixed-header {
@@ -125,6 +127,7 @@ $transition-time: 0.35s;
   //min-height: calc(100vh - var(--v3-navigationbar-height));
   //height:98%;
   overflow: hidden; /* 添加此属性防止容器本身滚动 */
+  width: 100%;
 
 }
 .app-main {
@@ -135,7 +138,6 @@ $transition-time: 0.35s;
   overflow-y: auto; /* 内容溢出时内部滚动 */
   height: 100%; /* 强制高度继承 */
   box-sizing: border-box; /* 添加盒模型计算规则 */
-
 }
 
 .fixed-header + .app-main {

@@ -126,9 +126,12 @@ const noHiddenRoutes = computed(() => {
   }
   &.is-active,
   &:hover {
-    background: var(--app-sidebar-menu-active-bg-color) !important;
-    box-shadow: 0px 2px 8px #4532c966;
+    background: var(--app-sidebar-menu-hover-bg-color) !important;
+    //box-shadow: 0px 2px 8px #4532c966;
     color: var(--app-sidebar-menu-text-active-color);
+  }
+  &.is-active{
+    background: var(--app-sidebar-menu-active-bg-color) !important;
   }
 }
 :deep(.el-sub-menu__title){
